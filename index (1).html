@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Heights — Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-dune" data-theme="dune">
+
+<!-- THEME SWITCHER -->
+<div class="theme-switcher" id="themeSwitcher">
+  <button class="theme-toggle-btn" onclick="toggleThemeSwitcher()" aria-label="Change theme">
+    <span class="theme-toggle-icon">◐</span>
+    <span class="theme-toggle-label">Theme</span>
+  </button>
+  <div class="theme-panel" id="themePanel">
+    <div class="theme-panel-label">Choose palette</div>
+    <div class="theme-swatches">
+      <button class="swatch active" data-theme="dune" onclick="setTheme('dune')" title="Dubai Dune">
+        <span class="swatch-dot" style="background:#C9A96E;"></span>
+        <span class="swatch-name">Dune</span>
+      </button>
+      <button class="swatch" data-theme="midnight" onclick="setTheme('midnight')" title="Midnight Sky">
+        <span class="swatch-dot" style="background:#4A6FA5;"></span>
+        <span class="swatch-name">Midnight</span>
+      </button>
+      <button class="swatch" data-theme="emerald" onclick="setTheme('emerald')" title="Emerald City">
+        <span class="swatch-dot" style="background:#2D8C6B;"></span>
+        <span class="swatch-name">Emerald</span>
+      </button>
+      <button class="swatch" data-theme="rose" onclick="setTheme('rose')" title="Desert Rose">
+        <span class="swatch-dot" style="background:#C17B74;"></span>
+        <span class="swatch-name">Rose</span>
+      </button>
+      <button class="swatch" data-theme="slate" onclick="setTheme('slate')" title="Carbon Slate">
+        <span class="swatch-dot" style="background:#8B9DB5;"></span>
+        <span class="swatch-name">Slate</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-mark">NH</div>
+    <div class="logo-text">
+      <div class="logo-title">New Heights</div>
+      <div class="logo-sub">Real Estate</div>
+    </div>
+    <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close menu">✕</button>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="nav-item active" data-section="dashboard" onclick="showSection('dashboard', this)">
+      <span class="nav-icon">▦</span> Dashboard
+    </a>
+    <a class="nav-item" data-section="media-plan" onclick="showSection('media-plan', this)">
+      <span class="nav-icon">◈</span> Media Plan
+    </a>
+    <a class="nav-item" data-section="ad-generator" onclick="showSection('ad-generator', this)">
+      <span class="nav-icon">✦</span> Ad Generator
+    </a>
+    <a class="nav-item" data-section="competitors" onclick="showSection('competitors', this)">
+      <span class="nav-icon">◎</span> Competitors
+    </a>
+    <a class="nav-item" data-section="strategy" onclick="showSection('strategy', this)">
+      <span class="nav-icon">◆</span> Strategy
+    </a>
+    <a class="nav-item" data-section="budget" onclick="showSection('budget', this)">
+      <span class="nav-icon">◉</span> Budget & CPL
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="market-pulse-badge">
+      <span class="pulse-dot"></span>
+      Market: Caution — Apr 2026
+    </div>
+  </div>
+</aside>
+
+<!-- MOBILE TOPBAR -->
+<div class="topbar" id="topbar">
+  <button class="hamburger" onclick="openSidebar()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="topbar-logo">
+    <span class="topbar-nh">NH</span> New Heights
+  </div>
+  <div class="topbar-pulse">
+    <span class="pulse-dot"></span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main" id="main">
+
+  <!-- ═══════════════════════════════════════ DASHBOARD ═══════ -->
+  <section class="section active" id="section-dashboard">
+    <div class="section-header">
+      <h1 class="section-title">Command Center</h1>
+      <p class="section-sub">New Heights Real Estate — Dubai Off-Plan Campaign Intelligence</p>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card" style="--anim-delay:0.05s">
+        <div class="kpi-label">Target CPL</div>
+        <div class="kpi-value">AED 180</div>
+        <div class="kpi-note">Blended, all channels</div>
+      </div>
+      <div class="kpi-card" style="--anim-delay:0.1s">
+        <div class="kpi-label">Rental Yield</div>
+        <div class="kpi-value">8–9.5%</div>
+        <div class="kpi-note">Mid-market, Apr 2026</div>
+      </div>
+      <div class="kpi-card" style="--anim-delay:0.15s">
+        <div class="kpi-label">Market Correction</div>
+        <div class="kpi-value accent-warn">−3–5%</div>
+        <div class="kpi-note">Price/sqft vs Q1 2025</div>
+      </div>
+      <div class="kpi-card" style="--anim-delay:0.2s">
+        <div class="kpi-label">Cash Buyers</div>
+        <div class="kpi-value">60%</div>
+        <div class="kpi-note">AED 43B Jan 2026</div>
+      </div>
+      <div class="kpi-card" style="--anim-delay:0.25s">
+        <div class="kpi-label">Off-Plan Share</div>
+        <div class="kpi-value">63%</div>
+        <div class="kpi-note">Of all Dubai deals</div>
+      </div>
+      <div class="kpi-card" style="--anim-delay:0.3s">
+        <div class="kpi-label">Lead → Appt</div>
+        <div class="kpi-value">8%</div>
+        <div class="kpi-note">Market average</div>
+      </div>
+    </div>
+
+    <div class="dash-grid">
+      <div class="dash-card animate-in" style="--anim-delay:0.2s">
+        <div class="card-eyebrow">Active channels</div>
+        <div class="channel-list">
+          <div class="channel-row">
+            <span class="ch-dot ch-meta"></span>
+            <span class="ch-name">Meta (FB / IG)</span>
+            <span class="ch-pct">40%</span>
+            <div class="ch-bar-wrap"><div class="ch-bar" style="width:40%"></div></div>
+          </div>
+          <div class="channel-row">
+            <span class="ch-dot ch-google"></span>
+            <span class="ch-name">Google Search</span>
+            <span class="ch-pct">30%</span>
+            <div class="ch-bar-wrap"><div class="ch-bar" style="width:30%"></div></div>
+          </div>
+          <div class="channel-row">
+            <span class="ch-dot ch-pmax"></span>
+            <span class="ch-name">Google PMax</span>
+            <span class="ch-pct">20%</span>
+            <div class="ch-bar-wrap"><div class="ch-bar" style="width:20%"></div></div>
+          </div>
+          <div class="channel-row">
+            <span class="ch-dot ch-tiktok"></span>
+            <span class="ch-name">TikTok</span>
+            <span class="ch-pct">10%</span>
+            <div class="ch-bar-wrap"><div class="ch-bar" style="width:10%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-card animate-in" style="--anim-delay:0.3s">
+        <div class="card-eyebrow">Market alert — April 2026</div>
+        <div class="alert-list">
+          <div class="alert-item alert-warn">
+            <span class="alert-dot"></span>
+            Transaction volumes down ~25% (March 2026 geopolitical shock)
+          </div>
+          <div class="alert-item alert-ok">
+            <span class="alert-dot"></span>
+            Physical prices down only 3–5% — sentiment, not structural
+          </div>
+          <div class="alert-item alert-ok">
+            <span class="alert-dot"></span>
+            85% of landlords holding — no panic selling
+          </div>
+          <div class="alert-item alert-warn">
+            <span class="alert-dot"></span>
+            Luxury AED 8M+ segment softening since late 2025
+          </div>
+          <div class="alert-item alert-ok">
+            <span class="alert-dot"></span>
+            Off-plan = 63% of all deals — buyers still buying
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-card animate-in" style="--anim-delay:0.4s">
+        <div class="card-eyebrow">NH positioning edge</div>
+        <div class="badge-cloud">
+          <span class="tag tag-accent">Off-plan specialist</span>
+          <span class="tag">Payment plan led</span>
+          <span class="tag tag-accent">TikTok first-mover</span>
+          <span class="tag">Multilingual creative</span>
+          <span class="tag tag-accent">RERA-compliant</span>
+          <span class="tag">5-min lead SLA</span>
+          <span class="tag">Arabic + Hindi/Urdu</span>
+          <span class="tag tag-accent">Safe-haven narrative</span>
+          <span class="tag">Developer-direct</span>
+          <span class="tag">60/40 post-handover</span>
+          <span class="tag tag-accent">Golden Visa eligible</span>
+          <span class="tag">4-channel full-funnel</span>
+        </div>
+      </div>
+
+      <div class="dash-card animate-in" style="--anim-delay:0.5s">
+        <div class="card-eyebrow">Quick actions</div>
+        <div class="quick-actions">
+          <button class="qa-btn" onclick="showSection('ad-generator', null)">
+            <span class="qa-icon">✦</span>
+            <span>Generate ad assets</span>
+          </button>
+          <button class="qa-btn" onclick="showSection('budget', null)">
+            <span class="qa-icon">◉</span>
+            <span>Adjust budget</span>
+          </button>
+          <button class="qa-btn" onclick="showSection('strategy', null)">
+            <span class="qa-icon">◆</span>
+            <span>View strategy</span>
+          </button>
+          <button class="qa-btn" onclick="showSection('competitors', null)">
+            <span class="qa-icon">◎</span>
+            <span>Competitor map</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ MEDIA PLAN ════════ -->
+  <section class="section" id="section-media-plan">
+    <div class="section-header">
+      <h1 class="section-title">Media Plan</h1>
+      <p class="section-sub">3-month launch flight — off-plan lead generation</p>
+    </div>
+
+    <div class="two-col">
+      <div class="content-card">
+        <div class="card-eyebrow">Channel strategy</div>
+        <div class="strategy-list">
+          <div class="strat-item">
+            <div class="strat-platform"><span class="ch-dot ch-meta"></span> Meta</div>
+            <div class="strat-desc">Primary volume driver. Reach expat HNI, NRI, GCC buyers via interest + behaviour stacks. Instant lead forms for frictionless capture. Carousel and video creative. Target Karachi, Mumbai, Riyadh, Kuwait City.</div>
+          </div>
+          <div class="strat-item">
+            <div class="strat-platform"><span class="ch-dot ch-google"></span> Google Search</div>
+            <div class="strat-desc">High-intent bottom-of-funnel. Own "off plan apartments Dubai," "buy property Dubai," "Dubai property safe 2026." Fastest path to qualified buyers already researching.</div>
+          </div>
+          <div class="strat-item">
+            <div class="strat-platform"><span class="ch-dot ch-pmax"></span> Google PMax</div>
+            <div class="strat-desc">Full-funnel automation across Search, Display, YouTube, Gmail and Maps. Feed asset groups with RERA-reassurance copy. Remarketing to site visitors at scale.</div>
+          </div>
+          <div class="strat-item">
+            <div class="strat-platform"><span class="ch-dot ch-tiktok"></span> TikTok</div>
+            <div class="strat-desc">Biggest opportunity now — competitors have gone quiet. Property walkthroughs, market explainers, "Is Dubai safe to buy?" content. Calm authority tone. 3–4 videos/week for organic reach.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <div class="card-eyebrow">3-month flight schedule</div>
+        <div class="flight-grid">
+          <div class="flight-header"></div>
+          <div class="flight-header">Month 1 — Launch</div>
+          <div class="flight-header">Month 2 — Scale</div>
+          <div class="flight-header">Month 3 — Optimise</div>
+
+          <div class="flight-label"><span class="ch-dot ch-meta"></span> Meta</div>
+          <div class="flight-cell phase-launch">4 creatives live, test audiences</div>
+          <div class="flight-cell phase-scale">Kill weak, scale +20%/wk</div>
+          <div class="flight-cell phase-retarget">LAL + retargeting active</div>
+
+          <div class="flight-label"><span class="ch-dot ch-google"></span> Google</div>
+          <div class="flight-cell phase-launch">Exact match only</div>
+          <div class="flight-cell phase-scale">Add phrase match</div>
+          <div class="flight-cell phase-retarget">Full match types</div>
+
+          <div class="flight-label"><span class="ch-dot ch-pmax"></span> PMax</div>
+          <div class="flight-cell phase-launch">Asset groups live</div>
+          <div class="flight-cell phase-scale">Exclusions added</div>
+          <div class="flight-cell phase-retarget">Optimised signals</div>
+
+          <div class="flight-label"><span class="ch-dot ch-tiktok"></span> TikTok</div>
+          <div class="flight-cell phase-launch">Test budget only</div>
+          <div class="flight-cell phase-scale">Scale if CPL &lt; 250</div>
+          <div class="flight-cell phase-retarget">Arabic creative test</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ AD GENERATOR ════════ -->
+  <section class="section" id="section-ad-generator">
+    <div class="section-header">
+      <h1 class="section-title">Ad Generator</h1>
+      <p class="section-sub">AI-powered, RERA-aware, persona-targeted — all four platforms</p>
+    </div>
+
+    <div class="gen-platform-tabs">
+      <button class="gen-tab active" data-platform="meta" onclick="setPlatform('meta', this)">
+        <span class="ch-dot ch-meta"></span> Meta
+      </button>
+      <button class="gen-tab" data-platform="google" onclick="setPlatform('google', this)">
+        <span class="ch-dot ch-google"></span> Google RSA
+      </button>
+      <button class="gen-tab" data-platform="pmax" onclick="setPlatform('pmax', this)">
+        <span class="ch-dot ch-pmax"></span> PMax
+      </button>
+      <button class="gen-tab" data-platform="tiktok" onclick="setPlatform('tiktok', this)">
+        <span class="ch-dot ch-tiktok"></span> TikTok
+      </button>
+    </div>
+
+    <div class="gen-form content-card">
+      <div class="form-grid">
+        <div class="form-field">
+          <label>Property type</label>
+          <select id="g-prop">
+            <option>Studio</option>
+            <option>1BR apartment</option>
+            <option selected>2BR apartment</option>
+            <option>3BR apartment</option>
+            <option>Townhouse</option>
+            <option>Villa 4–6BR</option>
+            <option>Penthouse</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Location</label>
+          <select id="g-loc">
+            <option>JVC</option>
+            <option>Business Bay</option>
+            <option selected>Dubai Marina</option>
+            <option>Downtown Dubai</option>
+            <option>Palm Jumeirah</option>
+            <option>MBR City</option>
+            <option>Creek Harbour</option>
+            <option>Emirates Hills</option>
+            <option>District One</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Buyer persona</label>
+          <select id="g-persona">
+            <option value="expat HNI investor (Indian, Pakistani, British) focused on rental yield and capital appreciation">Expat investor (HNI)</option>
+            <option value="GCC investor (Saudi, Kuwaiti, Emirati) seeking luxury and exclusivity">GCC investor</option>
+            <option value="NRI or off-plan speculator drawn by early pricing and handover timeline">NRI / speculator</option>
+            <option value="family or professional relocating to Dubai focused on lifestyle and schools">End-user / family</option>
+            <option value="UHNWI luxury buyer with $2M+ budget who values privacy and prestige">UHNWI luxury</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Starting price (AED)</label>
+          <input type="text" id="g-price" value="1,800,000" placeholder="e.g. 1,800,000">
+        </div>
+        <div class="form-field">
+          <label>Handover year</label>
+          <select id="g-handover">
+            <option>2025</option>
+            <option selected>2026</option>
+            <option>2027</option>
+            <option>2028</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Payment plan / USP</label>
+          <input type="text" id="g-usp" placeholder="e.g. 60/40 post-handover, sea view, Golden Visa">
+        </div>
+      </div>
+      <button class="gen-btn" id="genBtn" onclick="runAdGen()">
+        <span id="genBtnText">Generate <span id="genPlatformLabel">Meta</span> assets</span>
+        <span class="gen-btn-arrow">→</span>
+      </button>
+    </div>
+
+    <div class="gen-output" id="genOutput" style="display:none;">
+      <div class="output-header">
+        <span class="output-label" id="outputLabel">Ad assets</span>
+        <span class="score-badge" id="scoreBadge"></span>
+      </div>
+      <div class="output-body" id="outputBody"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ COMPETITORS ════════ -->
+  <section class="section" id="section-competitors">
+    <div class="section-header">
+      <h1 class="section-title">Competitor Map</h1>
+      <p class="section-sub">Dubai brokerage landscape — 2025/26</p>
+    </div>
+
+    <div class="comp-cards">
+      <div class="comp-card">
+        <div class="comp-name">fäm Properties</div>
+        <div class="comp-meta">Est. 2015 · Business Bay · Top 3 broker</div>
+        <div class="comp-row">
+          <span class="comp-section-label">Their approach</span>
+          <span class="comp-text">Full-service, heavy Meta + Google, strong portal spend (Bayut/PF). AI virtual tours. 10–15 min lead SLA. English-first ads.</span>
+        </div>
+        <div class="comp-row">
+          <span class="comp-section-label">Weakness</span>
+          <span class="comp-text">Broad positioning — no off-plan specialist voice. Portal-dependent. No TikTok presence.</span>
+        </div>
+        <div class="comp-tags">
+          <span class="tag tag-accent">NH edge: Off-plan authority</span>
+          <span class="tag">TikTok first-mover</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-name">Allsopp & Allsopp</div>
+        <div class="comp-meta">Est. 2008 · BBC Dubai Hustle · Tech-forward</div>
+        <div class="comp-row">
+          <span class="comp-section-label">Their approach</span>
+          <span class="comp-text">UK-founded, dominant in villa communities. Google Search + PPC heavy. Speed-to-market on listings. British/European buyer affinity.</span>
+        </div>
+        <div class="comp-row">
+          <span class="comp-section-label">Weakness</span>
+          <span class="comp-text">English-first messaging — underserves Indian, Arabic, South Asian segments. Weak off-plan narrative for GCC/NRI personas.</span>
+        </div>
+        <div class="comp-tags">
+          <span class="tag tag-accent">NH edge: Arabic + Hindi/Urdu creative</span>
+          <span class="tag">NRI off-plan focus</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-name">Betterhomes</div>
+        <div class="comp-meta">Est. 1986 · Oldest UAE agency · Legacy brand</div>
+        <div class="comp-row">
+          <span class="comp-section-label">Their approach</span>
+          <span class="comp-text">Portal-heavy, secondary market dominant, end-user focus. Google Search for brand terms. Transparency-first, guidance tone. Trusted by UK/European buyers.</span>
+        </div>
+        <div class="comp-row">
+          <span class="comp-section-label">Weakness</span>
+          <span class="comp-text">Perceived as secondary/rentals player, not off-plan. Conservative tone — slow to adopt TikTok. Lower urgency ads.</span>
+        </div>
+        <div class="comp-tags">
+          <span class="tag tag-accent">NH edge: Off-plan energy + video</span>
+          <span class="tag">TikTok reach</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-name">haus & haus</div>
+        <div class="comp-meta">Neighbourhood specialist · Boutique high-touch</div>
+        <div class="comp-row">
+          <span class="comp-section-label">Their approach</span>
+          <span class="comp-text">Lifestyle-led, neighbourhood specialists. Strong local SEO + community content. Meta lifestyle creative. Low paid media intensity. WhatsApp scheduling.</span>
+        </div>
+        <div class="comp-row">
+          <span class="comp-section-label">Weakness</span>
+          <span class="comp-text">Small portfolio — not a volume off-plan player. Limited global buyer reach. Low ad spend vs fäm or Allsopp.</span>
+        </div>
+        <div class="comp-tags">
+          <span class="tag tag-accent">NH edge: Developer-scale budget</span>
+          <span class="tag">Global persona reach</span>
+        </div>
+      </div>
+
+      <div class="comp-card">
+        <div class="comp-name">AX Capital</div>
+        <div class="comp-meta">Property management focus · ROI-positioned</div>
+        <div class="comp-row">
+          <span class="comp-section-label">Their approach</span>
+          <span class="comp-text">Maximising landlord profitability. Meta investor-targeting. Yield-forward ad copy. Strong CRM and database remarketing. ROI-heavy messaging.</span>
+        </div>
+        <div class="comp-row">
+          <span class="comp-section-label">Weakness</span>
+          <span class="comp-text">ROI language walks close to RERA limits. Weak off-plan emotional journey narrative. Weaker on payment plan storytelling.</span>
+        </div>
+        <div class="comp-tags">
+          <span class="tag tag-accent">NH edge: RERA-safe yield messaging</span>
+          <span class="tag">Payment plan story</span>
+        </div>
+      </div>
+
+      <div class="comp-card comp-card-nh">
+        <div class="comp-name">New Heights RE <span class="tag tag-accent" style="font-size:10px;vertical-align:middle;margin-left:6px;">You</span></div>
+        <div class="comp-meta">Off-plan specialist · 4-channel full-funnel · Developer-linked</div>
+        <div class="comp-row">
+          <span class="comp-section-label">Your approach</span>
+          <span class="comp-text">Persona-targeted multilingual creative. Payment plan-led narrative. Meta + Google RSA + PMax + TikTok. Uncertainty-era calm authority positioning. 5-min lead SLA promise.</span>
+        </div>
+        <div class="comp-row">
+          <span class="comp-section-label">Build on</span>
+          <span class="comp-text">Building brand recognition vs established names. Lean into RERA-escrow trust signals and data-backed uncertainty content to build credibility fast.</span>
+        </div>
+        <div class="comp-tags">
+          <span class="tag tag-accent">Full-suite 4-channel advantage</span>
+          <span class="tag tag-accent">Multilingual first-mover</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ STRATEGY ════════ -->
+  <section class="section" id="section-strategy">
+    <div class="section-header">
+      <h1 class="section-title">Uncertainty Strategy</h1>
+      <p class="section-sub">What to do and say in the current Dubai market — April 2026</p>
+    </div>
+
+    <div class="phase-timeline">
+      <div class="phase-block phase-now">
+        <div class="phase-badge">Now — Apr 2026</div>
+        <div class="phase-title">Sentiment shock phase</div>
+        <div class="phase-body">Shift tone from hype to calm authority. Stop "invest now before prices rise!" hooks — they land badly. Replace with data-backed reassurance: RERA escrow, AED-USD peg, 8–9% yield facts. Run "Is Dubai safe to buy right now?" style content — it matches what buyers are literally searching. Reduce budget on AED 5M+ luxury. Double down on AED 800K–2.5M where yield logic is clearest.</div>
+      </div>
+      <div class="phase-block phase-mid">
+        <div class="phase-badge">Q2/Q3 2026</div>
+        <div class="phase-title">Recovery & differentiation phase</div>
+        <div class="phase-body">Activate safe-haven capital narrative. Capital from Pakistan, Lebanon, and GCC flows INTO Dubai during regional uncertainty — run targeted ads in those markets. Build Arabic creative for GCC buyers who bargain-hunt during dips. Increase TikTok frequency — organic reach spikes when paid market pulls back. Build trust with RERA explainer content.</div>
+      </div>
+      <div class="phase-block phase-rec">
+        <div class="phase-badge">Q4 2026+</div>
+        <div class="phase-title">Recovery — scale hard and fast</div>
+        <div class="phase-body">Every prior Dubai correction (2008, 2020, 2022) was followed by a sharp recovery. Competitors who went quiet will be slow to re-enter. NH should have full infrastructure ready — audiences built, creatives tested, budgets pre-allocated — to 2–3x spend the moment sentiment indicators recover. The brands loudest on the recovery lap won the following year.</div>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:1.5rem;">
+      <div class="content-card">
+        <div class="card-eyebrow">Say this</div>
+        <ul class="do-list">
+          <li>"Your funds are held in RERA-regulated escrow"</li>
+          <li>"Dubai's AED is pegged to USD — zero currency risk"</li>
+          <li>"8–9% rental yield even in today's market"</li>
+          <li>"60/40 post-handover — pay less now, more after delivery"</li>
+          <li>"Every prior Dubai dip produced the best entry point"</li>
+          <li>"85% of landlords are holding — not selling"</li>
+        </ul>
+      </div>
+      <div class="content-card">
+        <div class="card-eyebrow">Avoid this</div>
+        <ul class="dont-list">
+          <li>"Prices are rising fast — don't miss out!"</li>
+          <li>"Guaranteed returns" (RERA violation + hollow now)</li>
+          <li>"Safe haven" without evidence backing it</li>
+          <li>"Best time to invest!" — trust-breaking right now</li>
+          <li>Ignoring the current market context entirely</li>
+          <li>Overselling the luxury AED 8M+ segment</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="differentiators-grid" style="margin-top:1.5rem;">
+      <div class="card-eyebrow" style="grid-column:1/-1;">6 differentiators for uncertain times</div>
+      <div class="diff-card">
+        <div class="diff-num">01</div>
+        <div class="diff-title">Calm data content series</div>
+        <div class="diff-body">Weekly short video: "Dubai real estate in numbers this week." Transaction volumes, rental yields, escrow stats. You become the trusted voice of reason.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">02</div>
+        <div class="diff-title">RERA-backed reassurance ads</div>
+        <div class="diff-body">Lead with "Your investment is protected by RERA escrow — funds only released at construction milestones." Directly addresses the #1 hesitation.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">03</div>
+        <div class="diff-title">3–5 year horizon framing</div>
+        <div class="diff-body">Frame NH listings not as "buy now" but as "buy for 2028–2030." Disarms urgency objections and pre-qualifies serious investors over speculators.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">04</div>
+        <div class="diff-title">Safe-haven inflow targeting</div>
+        <div class="diff-body">Run Meta ads geo-targeted to Karachi, Beirut, Mumbai, Moscow. These buyers are actively looking right now — not pausing like Western capital.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">05</div>
+        <div class="diff-title">5-minute lead response SLA</div>
+        <div class="diff-body">Make NH's promise public. In an uncertain market, hesitant leads need instant human reassurance. First to call wins the appointment.</div>
+      </div>
+      <div class="diff-card">
+        <div class="diff-num">06</div>
+        <div class="diff-title">Payment plan as risk reducer</div>
+        <div class="diff-body">Reframe 60/40 post-handover: "Less capital at risk while geopolitics plays out." RERA-safe, genuinely true, and compelling for nervous buyers.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ BUDGET & CPL ════════ -->
+  <section class="section" id="section-budget">
+    <div class="section-header">
+      <h1 class="section-title">Budget & CPL</h1>
+      <p class="section-sub">Monthly allocation — drag to adjust total spend</p>
+    </div>
+
+    <div class="content-card" style="margin-bottom:1.5rem;">
+      <div class="budget-slider-wrap">
+        <div class="budget-slider-top">
+          <label class="slider-label">Monthly total budget</label>
+          <span class="slider-value" id="totalDisplay">AED 50,000</span>
+        </div>
+        <input type="range" id="budgetSlider" min="20000" max="200000" step="5000" value="50000" oninput="updateBudget()" class="budget-slider">
+        <div class="slider-ends">
+          <span>AED 20k</span><span>AED 200k</span>
+        </div>
+      </div>
+
+      <div class="budget-channels" id="budgetChannels"></div>
+    </div>
+
+    <div class="content-card">
+      <div class="card-eyebrow">CPL & ROI projections</div>
+      <div class="cpl-table-wrap">
+        <table class="cpl-table">
+          <thead>
+            <tr>
+              <th>Channel</th>
+              <th>Budget (AED)</th>
+              <th>Est. leads</th>
+              <th>CPL (AED)</th>
+              <th>Appointments</th>
+            </tr>
+          </thead>
+          <tbody id="cplTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- SIDEBAR OVERLAY (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
